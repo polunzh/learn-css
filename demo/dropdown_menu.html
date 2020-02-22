@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>下拉菜单</title>
+  <style>
+    .user:hover+.menu {
+      display: list-item;
+    }
+
+    .menu {
+      display: none;
+      list-style: none;
+    }
+
+    .menu:hover {
+      display: list-item;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li class="user">用户</li>
+    <ul class="menu">
+      <li>账户设置</li>
+      <li>登出</li>
+    </ul>
+  </ul>
+</body>
+
+</html>

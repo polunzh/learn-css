@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .before-after::before {
+      content: '😁';
+    }
+
+    .before-after::after {
+      content: '😋';
+    }
+
+    .active:active {
+      color: peru;
+    }
+
+    .any-link :any-link {
+      color: red;
+    }
+
+    .adjacent-sibling>div+span+div {
+      background-color: aqua;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="before-after">::before && ::after</div>
+  <br />
+  <a class="active" href="#">:active</a>
+  <button class="active">Button Active</button>
+  <div class="any-link">
+    :any-link
+    <br>
+    <a href="#">link1</a>
+    <a>no ref link</a>
+    <a href="#">link2</a>
+  </div>
+  <div class="adjacent-sibling">
+    <div>
+      <p>I'm a paragraph</p>
+      <p>I get selected!</p>
+    </div>
+    <span>This is a span</span>
+    <div>
+      <p>I'm a paragraph</p>
+      <h2>Monkey hair</h2>
+      <p>I will NOT get selected</p>
+    </div>
+  </div>
+</body>
+
+</html>
