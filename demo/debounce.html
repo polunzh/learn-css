@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防抖和节流</title>
+</head>
+
+<body>
+  <input id="debounce" onkeyup="search()" placeholder="防抖" />
+
+  <ul id="content"></ul>
+
+  <script>
+    const ul = document.getElementById('content');
+    const debounceInput = document.getElementById('debounce');
+
+    function appendList(content) {
+      const li = document.createElement('li');
+      li.innerText = content;
+      ul.appendChild(li);
+    }
+
+
+    function debounce(func, delay) {
+      return (args) => {
+        clearTimeout(func.timer);
+        func.timer = setTimeout(() => func(args), delay);
+      };
+    }
+
+    function throttle(func, delay) {
+      let last, deferTimer;
+
+      return (args) => {
+        if (last && Date.now() < last + delay) {
+          clearTimeout(deferTimer);
+          deferTimer = setTimeout(() => {
+              last = Date.now();
+              func(args);
+            },
+            delay
+          );
+        } else {
+          last = Date.now();
+          func(args);
+        }
+      };
+    }
+
+    const search = debounce(() => appendList(debounceInput.value), 1000);
+    const resize = throttle(() => appendList(`throttle: ${debounceInput.value}    ${new Date()}`), 1000);
+    window.onresize = resize;
+  </script>
+</body>
+
+</html>
